@@ -1,17 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StyleSheet, View, ImageBackground } from "react-native";
 import { FAB } from "react-native-paper";
 import Clock from "../components/Clock";
 import NewsFeed from "../components/NewsFeed";
-import { writeData } from "../lib/store";
+import { readData, writeData } from "../lib/store";
 
 const DEFAULT_UNSPLASH_URI =
   "https://source.unsplash.com/1280x800/?nature,space";
 
 function HomeScreen({ navigation }) {
   const [imageSource, setImageSource] = React.useState({
-    uri: DEFAULT_UNSPLASH_URI,
+    uri: null,
   });
+
+  const updateWallpaper = () => {
+    // generate timestamped URI
+    let uri = `${DEFAULT_UNSPLASH_URI}&t=${Date.now()}`;
+
+    // update the imageSource state
+    setImageSource({
+      uri: uri,
+    });
+
+    // persist current imageSource
+    writeData("CURRENT_WALLPAPER_URI", uri);
+  };
+
+  useEffect(() => {
+    if (imageSource.uri === null) {
+      updateWallpaper();
+    }
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -42,25 +61,33 @@ function HomeScreen({ navigation }) {
             }}
             icon="refresh"
             onPress={() => {
-              // update the image source
-              setImageSource({
-                uri: `${DEFAULT_UNSPLASH_URI}&t=${Date.now()}`,
-              });
+              updateWallpaper();
             }}
           />
           <FAB
-            style={{
-              marginRight: 16,
-            }}
             icon="weather-night"
+            label="Night Mode"
             onPress={() => {
-              // enable night mode
+              // Handle toggling Dark Mode
 
-              // set background image to black
-              setImageSource({ uri: "https://i.imgur.com/Olu1p7w.png" });
+              readData("IS_DARK_MODE").then((darkMode) => {
+                if (darkMode === "true") {
+                  // Disable Dark Mode
+                  writeData("IS_DARK_MODE", "false");
 
-              // TODO: reduce display brightness
-              writeData("IS_DARK_MODE", true);
+                  readData("CURRENT_WALLPAPER_URI").then((uri) => {
+                    setImageSource({ uri: uri });
+                  });
+                } else {
+                  // Enable Dark Mode
+                  writeData("IS_DARK_MODE", "true");
+
+                  // Set dark image as background
+                  setImageSource({ uri: "https://i.imgur.com/Olu1p7w.png" });
+
+                  // TODO: reduce display brightness
+                }
+              });
             }}
           />
         </View>

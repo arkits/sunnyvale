@@ -5,5 +5,5 @@ export function prettyDate(d) {
 }
 
 export function prettyTime(d) {
-  return format(d, "hh:mm:ss");
+  return format(d, "hh:mm");
 }

@@ -100,7 +100,8 @@ export default function NewsFeed() {
           fontFamily: "Inter_400Regular",
         }}
       >
-        {feedItem?.feedName} {SafePrettyDate(feedItem?.publishedDate)}
+        {feedItem?.feedName}
+        {SafePrettyDate(feedItem?.publishedDate)}
       </Text>
     </View>
   );

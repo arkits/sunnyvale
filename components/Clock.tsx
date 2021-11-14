@@ -20,7 +20,7 @@ export default function Clock() {
       <Text
         style={{
           color: "#fff",
-          fontSize: 90,
+          fontSize: 120,
           fontFamily: "Inter_700Bold",
         }}
       >
@@ -31,6 +31,7 @@ export default function Clock() {
           color: "#fff",
           fontSize: 40,
           fontFamily: "Inter_500Medium",
+          marginTop: -10,
         }}
       >
         {timeTextFooter}

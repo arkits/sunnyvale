@@ -2,9 +2,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export async function writeData(key: string, value: any) {
   try {
-    const jsonValue = JSON.stringify(value);
-    await AsyncStorage.setItem(key, jsonValue);
-    console.log(`Wrote Data - key=${key} value=${jsonValue}`);
+    console.log(`Writing Data - key=${key} value=${value}`);
+    return await AsyncStorage.setItem(key, value);
   } catch (e) {
     console.error(e);
   }
