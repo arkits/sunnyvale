@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { StyleSheet, View, ImageBackground } from "react-native";
-import { FAB } from "react-native-paper";
+import { Colors, FAB, ProgressBar } from "react-native-paper";
 import Clock from "../components/Clock";
 import NewsFeed from "../components/NewsFeed";
 import { readData, writeData } from "../lib/store";
@@ -12,6 +12,9 @@ function HomeScreen({ navigation }) {
   const [imageSource, setImageSource] = React.useState({
     uri: null,
   });
+
+  const [currentDate, setCurrentDate] = React.useState(new Date());
+  const [secondsProgress, setSecondsProgress] = React.useState(0);
 
   const updateWallpaper = () => {
     // generate timestamped URI
@@ -30,7 +33,14 @@ function HomeScreen({ navigation }) {
     if (imageSource.uri === null) {
       updateWallpaper();
     }
-  }, []);
+
+    setTimeout(() => {
+      const date = new Date();
+      const seconds = date.getSeconds();
+      setCurrentDate(date);
+      setSecondsProgress(seconds / 60);
+    }, 1000);
+  }, [currentDate]);
 
   return (
     <View style={styles.container}>
@@ -40,8 +50,11 @@ function HomeScreen({ navigation }) {
         style={styles.image}
       >
         <View style={styles.overlay} />
+
+        <ProgressBar progress={secondsProgress} color={Colors.white} />
+
         <View style={styles.widgetsContainer}>
-          <Clock />
+          <Clock date={currentDate} />
           <NewsFeed />
         </View>
 

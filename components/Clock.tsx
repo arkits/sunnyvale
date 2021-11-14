@@ -2,14 +2,13 @@ import React, { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { prettyDate, prettyTime } from "../lib/dates";
 
-export default function Clock() {
+export default function Clock({ date }) {
   const [timeTextHeader, setTimeTextHeader] = React.useState("");
   const [timeTextFooter, setTimeTextFooter] = React.useState("");
 
   useEffect(() => {
     setTimeout(() => {
-      const date = new Date();
-
+      // const date = new Date();
       setTimeTextHeader(prettyTime(date));
       setTimeTextFooter(prettyDate(date));
     }, 1000);
