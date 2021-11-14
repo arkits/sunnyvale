@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { format, formatDistance, formatRelative, subDays } from "date-fns";
+import { prettyDate, prettyTime } from "../lib/dates";
 
 export default function Clock() {
   const [timeTextHeader, setTimeTextHeader] = React.useState("");
@@ -10,8 +10,8 @@ export default function Clock() {
     setTimeout(() => {
       const date = new Date();
 
-      setTimeTextHeader(format(date, "hh:mm:ss"));
-      setTimeTextFooter(format(date, "EEE, LLL do yyyy"));
+      setTimeTextHeader(prettyTime(date));
+      setTimeTextFooter(prettyDate(date));
     }, 1000);
   });
 
