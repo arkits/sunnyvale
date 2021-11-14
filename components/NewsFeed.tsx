@@ -8,7 +8,7 @@ export default function NewsFeed() {
         style={{
           color: "#fff",
           fontSize: 30,
-          fontWeight: "bold",
+          fontFamily: "Inter_700Bold",
         }}
       >
         News Feed
@@ -19,6 +19,7 @@ export default function NewsFeed() {
           fontSize: 40,
           paddingTop: 20,
           paddingBottom: 20,
+          fontFamily: "Inter_500Medium",
         }}
       >
         Twitter shouldn’t be hiding basic app improvements behind its Blue
@@ -28,8 +29,7 @@ export default function NewsFeed() {
         style={{
           color: "#fff",
           fontSize: 20,
-          fontWeight: "bold",
-          fontStyle: "italic",
+          fontFamily: "Inter_400Regular",
         }}
       >
         Ars Technica - March 24, 2020

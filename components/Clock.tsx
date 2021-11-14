@@ -21,7 +21,7 @@ export default function Clock() {
         style={{
           color: "#fff",
           fontSize: 90,
-          fontWeight: "bold",
+          fontFamily: "Inter_700Bold",
         }}
       >
         {timeTextHeader}
@@ -30,7 +30,7 @@ export default function Clock() {
         style={{
           color: "#fff",
           fontSize: 40,
-          fontWeight: "bold",
+          fontFamily: "Inter_500Medium",
         }}
       >
         {timeTextFooter}

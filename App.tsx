@@ -13,6 +13,8 @@ import theme from "./theme";
 import HomeScreen from "./pages/HomeScreen";
 import SettingsScreen from "./pages/SettingsScreen";
 import { Appbar } from 'react-native-paper';
+import AppLoading from 'expo-app-loading';
+import { useFonts, Inter_400Regular, Inter_700Bold, Inter_500Medium } from '@expo-google-fonts/inter';
 
 const Stack = createStackNavigator();
 
@@ -33,19 +35,30 @@ function CustomNavigationBar({ navigation, back, route }) {
 
 
 export default function App() {
-  return (
-    <PaperProvider theme={theme}>
-      <NavigationContainer theme={theme}>
-        <Stack.Navigator initialRouteName="Home"
-          screenOptions={{
-            header: (props) => <CustomNavigationBar {...props} />,
-          }}
-        >
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="Settings" component={SettingsScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </PaperProvider>
-  );
+
+  let [fontsLoaded] = useFonts({
+    Inter_400Regular,
+    Inter_700Bold,
+    Inter_500Medium
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  } else {
+    return (
+      <PaperProvider theme={theme}>
+        <NavigationContainer theme={theme}>
+          <Stack.Navigator initialRouteName="Home"
+            screenOptions={{
+              header: (props) => <CustomNavigationBar {...props} />,
+            }}
+          >
+            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="Settings" component={SettingsScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </PaperProvider>
+    );
+  }
 }
 
