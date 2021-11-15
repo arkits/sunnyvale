@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { StyleSheet, View, ImageBackground } from "react-native";
 import { Colors, FAB, ProgressBar } from "react-native-paper";
-import Clock from "../components/Clock";
-import NewsFeed from "../components/NewsFeed";
 import { readData, writeData } from "../lib/store";
 import { useKeepAwake } from "expo-keep-awake";
+import Clock from "../components/Clock";
+import NewsFeed from "../components/NewsFeed";
+import WeatherFeed from "../components/WeatherFeed";
 
 const DEFAULT_UNSPLASH_URI =
   "https://source.unsplash.com/1280x800/?nature,space";
@@ -56,9 +57,11 @@ function HomeScreen({ navigation }) {
 
         <ProgressBar progress={secondsProgress} color={Colors.white} />
 
+        <Clock date={currentDate} />
+
         <View style={styles.widgetsContainer}>
-          <Clock date={currentDate} />
           <NewsFeed />
+          <WeatherFeed />
         </View>
 
         <View
@@ -132,14 +135,17 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
   widgetsContainer: {
-    flex: 1,
     flexDirection: "row",
+    alignItems: "flex-start",
+    marginTop: 44,
+    marginLeft: 44,
+    marginRight: 44,
   },
   image: {
     flex: 1,
   },
   overlay: {
-    backgroundColor: "rgba(0,0,0,0.5)",
+    backgroundColor: "rgba(0,0,0,0.6)",
     position: "absolute",
     top: 0,
     left: 0,

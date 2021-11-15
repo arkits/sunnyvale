@@ -76,7 +76,7 @@ export default function NewsFeed() {
       <Text
         style={{
           color: "#fff",
-          fontSize: 30,
+          fontSize: 25,
           fontFamily: "Inter_700Bold",
         }}
       >
@@ -85,7 +85,7 @@ export default function NewsFeed() {
       <Text
         style={{
           color: "#fff",
-          fontSize: 40,
+          fontSize: 30,
           paddingTop: 20,
           paddingBottom: 20,
           fontFamily: "Inter_500Medium",
@@ -110,7 +110,6 @@ export default function NewsFeed() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingLeft: 20,
     paddingRight: 20,
     justifyContent: "center",
   },

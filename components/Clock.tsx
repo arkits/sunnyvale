@@ -21,6 +21,7 @@ export default function Clock({ date }) {
           color: "#fff",
           fontSize: 120,
           fontFamily: "Inter_700Bold",
+          paddingRight: 60,
         }}
       >
         {timeTextHeader}
@@ -30,7 +31,6 @@ export default function Clock({ date }) {
           color: "#fff",
           fontSize: 40,
           fontFamily: "Inter_500Medium",
-          marginTop: -10,
         }}
       >
         {timeTextFooter}
@@ -41,8 +41,9 @@ export default function Clock({ date }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+    marginTop: 40,
   },
 });

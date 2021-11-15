@@ -1,28 +1,29 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, View, Text, } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import "react-native-gesture-handler";
-import {
-  NavigationContainer,
-} from "@react-navigation/native";
-import {
-  Provider as PaperProvider,
-} from "react-native-paper";
+import { NavigationContainer } from "@react-navigation/native";
+import { Provider as PaperProvider } from "react-native-paper";
 import theme from "./theme";
 import HomeScreen from "./pages/HomeScreen";
 import SettingsScreen from "./pages/SettingsScreen";
-import { Appbar } from 'react-native-paper';
-import AppLoading from 'expo-app-loading';
-import { useFonts, Inter_400Regular, Inter_700Bold, Inter_500Medium } from '@expo-google-fonts/inter';
+import { Appbar } from "react-native-paper";
+import AppLoading from "expo-app-loading";
+import {
+  useFonts,
+  Inter_400Regular,
+  Inter_700Bold,
+  Inter_500Medium,
+  Inter_100Thin,
+} from "@expo-google-fonts/inter";
 
 const Stack = createStackNavigator();
 
 function CustomNavigationBar({ navigation, back, route }) {
-
   // no NavigationBar on the HomeScreen
-  if (route.name === 'Home') {
-    return null
+  if (route.name === "Home") {
+    return null;
   }
 
   return (
@@ -33,13 +34,12 @@ function CustomNavigationBar({ navigation, back, route }) {
   );
 }
 
-
 export default function App() {
-
   let [fontsLoaded] = useFonts({
     Inter_400Regular,
     Inter_700Bold,
-    Inter_500Medium
+    Inter_500Medium,
+    Inter_100Thin,
   });
 
   if (!fontsLoaded) {
@@ -48,7 +48,8 @@ export default function App() {
     return (
       <PaperProvider theme={theme}>
         <NavigationContainer theme={theme}>
-          <Stack.Navigator initialRouteName="Home"
+          <Stack.Navigator
+            initialRouteName="Home"
             screenOptions={{
               header: (props) => <CustomNavigationBar {...props} />,
             }}
@@ -61,4 +62,3 @@ export default function App() {
     );
   }
 }
-
