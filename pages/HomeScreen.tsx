@@ -4,6 +4,7 @@ import { Colors, FAB, ProgressBar } from "react-native-paper";
 import Clock from "../components/Clock";
 import NewsFeed from "../components/NewsFeed";
 import { readData, writeData } from "../lib/store";
+import { useKeepAwake } from "expo-keep-awake";
 
 const DEFAULT_UNSPLASH_URI =
   "https://source.unsplash.com/1280x800/?nature,space";
@@ -41,6 +42,8 @@ function HomeScreen({ navigation }) {
       setSecondsProgress(seconds / 60);
     }, 1000);
   }, [currentDate]);
+
+  useKeepAwake();
 
   return (
     <View style={styles.container}>
