@@ -2,16 +2,20 @@ import React, { useEffect } from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import { OPENWEATHER_API_KEY } from "@env";
 
-export default function WeatherFeed() {
+export default function WeatherWidget() {
   const [weather, setWeather] = React.useState({});
 
   const updateWeather = () => {
+    console.log(
+      "Updating Weather... OPENWEATHER_API_KEY: ",
+      OPENWEATHER_API_KEY
+    );
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=sunnyvale&appid=${OPENWEATHER_API_KEY}&units=metric`
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log("Updated WeatherFeed");
+        console.log("Finished WeatherFeed!");
         setWeather(data);
       });
   };

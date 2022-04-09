@@ -12,6 +12,7 @@ import DateWidget from "../../components/widgets/DateWidget";
 import ClockWidget from "../../components/widgets/ClockWidget";
 
 import Heading1 from "../../components/text/Heading1";
+import WeatherWidget from "../../components/widgets/WeatherWidget";
 
 const DEFAULT_UNSPLASH_URI =
   "https://source.unsplash.com/1280x800/?nature,space";
@@ -72,7 +73,7 @@ export default function Home({ navigation }: any) {
           <View style={styles.nowWidget}>
             <Heading1 text="Now"></Heading1>
             <NewsWidget />
-            <NewsWidget />
+            <WeatherWidget />
           </View>
         </View>
 
