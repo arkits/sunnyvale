@@ -17,7 +17,7 @@ const FEED_CONFIG = [
 
 const RSS_FEED_URL = "https://rss.archit.xyz/rss/feed?url=";
 
-export default function NewsFeed() {
+export default function NewsWidget() {
   const [feedItem, setFeedItem] = React.useState({
     title: null,
     authorName: null,

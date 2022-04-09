@@ -1,14 +1,17 @@
 import React, { useEffect } from "react";
 import { StyleSheet, View, ImageBackground } from "react-native";
-import { Colors, FAB, ProgressBar } from "react-native-paper";
-import { readData, writeData } from "../../lib/store";
+import { Colors, ProgressBar } from "react-native-paper";
+import { writeData } from "../../lib/store";
 import { useKeepAwake } from "expo-keep-awake";
-import NewsFeed from "../../components/widgets/NewsFeed";
-import DateWidget from "../../components/widgets/DateWidget";
-import ClockWidget from "../../components/widgets/ClockWidget";
-import Heading1 from "../../components/text/Heading1";
+
 import SettingsFab from "./SettingsFab";
 import QuickActions from "./QuickActions";
+
+import NewsWidget from "../../components/widgets/NewsWidget";
+import DateWidget from "../../components/widgets/DateWidget";
+import ClockWidget from "../../components/widgets/ClockWidget";
+
+import Heading1 from "../../components/text/Heading1";
 
 const DEFAULT_UNSPLASH_URI =
   "https://source.unsplash.com/1280x800/?nature,space";
@@ -68,8 +71,8 @@ export default function Home({ navigation }: any) {
 
           <View style={styles.nowWidget}>
             <Heading1 text="Now"></Heading1>
-            <NewsFeed />
-            <NewsFeed />
+            <NewsWidget />
+            <NewsWidget />
           </View>
         </View>
 
@@ -104,14 +107,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginTop: 50,
-    marginLeft: 120,
+    marginLeft: 150,
   },
   clockWidget: {
     alignContent: "center",
-    marginRight: 80,
+    marginRight: 50,
   },
   nowWidget: {
-    marginLeft: 100,
+    marginLeft: 80,
     alignContent: "center",
     maxWidth: "50%",
   },
