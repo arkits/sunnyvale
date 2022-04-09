@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { prettyDate } from "../lib/dates";
+import { prettyDate } from "../../lib/dates";
+import constants from "../constants";
+import Heading1 from "../text/Heading1";
 
 const FEED_CONFIG = [
   {
@@ -13,7 +15,7 @@ const FEED_CONFIG = [
   },
 ];
 
-const RSS_FEED_URL = "https://archit.xyz/rss/feed?url=";
+const RSS_FEED_URL = "https://rss.archit.xyz/rss/feed?url=";
 
 export default function NewsFeed() {
   const [feedItem, setFeedItem] = React.useState({
@@ -59,13 +61,13 @@ export default function NewsFeed() {
 
     setTimeout(() => {
       refreshFeed();
-    }, 30 * 1000);
+    }, 60 * 1000);
   }, []);
 
   const SafePrettyDate = (d: any) => {
     try {
       const date = new Date(d);
-      return ` - ${prettyDate(date)}`;
+      return ` • ${prettyDate(date)}`;
     } catch (error) {
       return "";
     }
@@ -76,19 +78,9 @@ export default function NewsFeed() {
       <Text
         style={{
           color: "#fff",
-          fontSize: 25,
-          fontFamily: "Inter_700Bold",
-        }}
-      >
-        News Feed
-      </Text>
-      <Text
-        style={{
-          color: "#fff",
-          fontSize: 30,
+          fontSize: 26,
           paddingTop: 20,
-          paddingBottom: 20,
-          fontFamily: "Inter_500Medium",
+          fontFamily: constants.font.medium,
         }}
       >
         {feedItem?.title}
@@ -96,12 +88,13 @@ export default function NewsFeed() {
       <Text
         style={{
           color: "#fff",
-          fontSize: 20,
+          fontSize: 14,
           fontFamily: "Inter_400Regular",
         }}
       >
-        {feedItem?.feedName}
-        {SafePrettyDate(feedItem?.publishedDate)}
+        {`News • ${feedItem?.feedName}${SafePrettyDate(
+          feedItem?.publishedDate
+        )}`}
       </Text>
     </View>
   );
@@ -110,7 +103,9 @@ export default function NewsFeed() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingRight: 20,
     justifyContent: "center",
+    paddingTop: 20,
+    paddingBottom: 20,
+    paddingRight: 100,
   },
 });

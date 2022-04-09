@@ -1,12 +1,10 @@
-import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import React, { useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { Provider as PaperProvider } from "react-native-paper";
 import theme from "./theme";
-import HomeScreen from "./pages/HomeScreen";
+import HomeScreen from "./pages/Home";
 import SettingsScreen from "./pages/SettingsScreen";
 import { Appbar } from "react-native-paper";
 import AppLoading from "expo-app-loading";
@@ -18,9 +16,19 @@ import {
   Inter_100Thin,
 } from "@expo-google-fonts/inter";
 
+import * as ScreenOrientation from "expo-screen-orientation";
+
 const Stack = createStackNavigator();
 
-function CustomNavigationBar({ navigation, back, route }) {
+function CustomNavigationBar({
+  navigation,
+  back,
+  route,
+}: {
+  navigation: any;
+  back: any;
+  route: any;
+}) {
   // no NavigationBar on the HomeScreen
   if (route.name === "Home") {
     return null;
@@ -35,6 +43,9 @@ function CustomNavigationBar({ navigation, back, route }) {
 }
 
 export default function App() {
+  const [orientationIsLandscape, setOrientation] = useState(true);
+  console.log("orientationIsLandscape", orientationIsLandscape);
+
   let [fontsLoaded] = useFonts({
     Inter_400Regular,
     Inter_700Bold,
