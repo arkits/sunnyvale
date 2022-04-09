@@ -26,16 +26,6 @@ export default function WeatherWidget() {
 
   return (
     <View style={styles.container}>
-      <Text
-        style={{
-          color: "#fff",
-          fontSize: 25,
-          fontFamily: "Inter_700Bold",
-        }}
-      >
-        Weather
-      </Text>
-
       <View style={{ justifyContent: "center", flexDirection: "row" }}>
         <Image
           style={{ width: 100, height: 100 }}
@@ -59,7 +49,7 @@ export default function WeatherWidget() {
         <Text
           style={{
             color: "#fff",
-            fontSize: 30,
+            fontSize: 22,
             fontFamily: "Inter_400Regular",
           }}
         >
@@ -73,7 +63,7 @@ export default function WeatherWidget() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingRight: 20,
+    paddingRight: 100,
     justifyContent: "center",
   },
 });

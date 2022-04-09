@@ -44,7 +44,6 @@ function CustomNavigationBar({
 
 export default function App() {
   const [orientationIsLandscape, setOrientation] = useState(true);
-  console.log("orientationIsLandscape", orientationIsLandscape);
 
   let [fontsLoaded] = useFonts({
     Inter_400Regular,

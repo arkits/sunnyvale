@@ -3,8 +3,8 @@ import { StyleSheet, Text, View } from "react-native";
 import { prettyHour, prettyMin } from "../../lib/dates";
 
 export default function ClockWidget({ date }: { date: Date }) {
-  const [timeTextHour, setTimeTextHour] = React.useState("");
-  const [timeTextMin, setTimeTextMin] = React.useState("");
+  const [timeTextHour, setTimeTextHour] = React.useState("00");
+  const [timeTextMin, setTimeTextMin] = React.useState("00");
 
   useEffect(() => {
     setTimeout(() => {

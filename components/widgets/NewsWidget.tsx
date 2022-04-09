@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { prettyDate } from "../../lib/dates";
 import constants from "../constants";
-import Heading1 from "../text/Heading1";
 
 const FEED_CONFIG = [
   {

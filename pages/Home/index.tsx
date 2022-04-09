@@ -71,7 +71,6 @@ export default function Home({ navigation }: any) {
           </View>
 
           <View style={styles.nowWidget}>
-            <Heading1 text="Now"></Heading1>
             <NewsWidget />
             <WeatherWidget />
           </View>
